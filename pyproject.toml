@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "imagetool"
+name = "imagectl"
 version = "0.1.0"
 description = "Resize/mask/compress images (PNG/JPEG) via Streamlit + Pillow."
 readme = "README.md"
@@ -17,17 +17,21 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 
-dependencies = ["pillow>=10.0"]
+dependencies = [
+  "pillow>=10.0",
+  "streamlit>=1.50.0"
+]
 
 [project.optional-dependencies]
 web = ["streamlit>=1.50.0"]
 
 [project.scripts]
-imagetool-web = "imagetool.web:main"
+imagectl = "imagectl.web:main"
+imagectl-web = "imagectl.web:main"
 
 [project.urls]
-Homepage = "https://github.com/TamerOnLine/imagetool"
-Issues   = "https://github.com/TamerOnLine/imagetool/issues"
+Homepage = "https://github.com/TamerOnLine/imagectl"
+Issues   = "https://github.com/TamerOnLine/imagectl/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
@@ -35,8 +39,9 @@ package-dir = { "" = "src" }
 [tool.setuptools.packages.find]
 where = ["src"]
 
+
 [tool.setuptools.package-data]
-"imagetool" = []
+"imagectl" = []
 
 [tool.uv]
 dev-dependencies = ["streamlit>=1.50.0"]
