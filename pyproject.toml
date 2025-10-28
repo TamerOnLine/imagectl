@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imagetool"
+version = "0.1.0"
+description = "Resize/mask/compress images (PNG/JPEG) via Streamlit + Pillow."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Tamer Hamad Faour" }]
+keywords = ["images","resize","compress","pillow","streamlit","webui"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+dependencies = ["pillow>=10.0"]
+
+[project.optional-dependencies]
+web = ["streamlit>=1.50.0"]
+
+[project.scripts]
+imagetool-web = "imagetool.web:main"
+
+[project.urls]
+Homepage = "https://github.com/TamerOnLine/imagetool"
+Issues   = "https://github.com/TamerOnLine/imagetool/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"imagetool" = []
+
+[tool.uv]
+dev-dependencies = ["streamlit>=1.50.0"]

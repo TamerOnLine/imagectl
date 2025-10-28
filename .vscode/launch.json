@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: F:\\imagectl\\run.py",
+      "type": "python",
+      "request": "launch",
+      "program": "F:\\imagectl\\run.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}
