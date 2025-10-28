@@ -1,182 +1,134 @@
-# 🖼️ ImageTool — Batch Resize, Mask & Compress Images
+# 🖼️ imagectl — Batch Resize, Mask & Compress (Web UI)
 
 <p align="center">
-  <a href="https://github.com/TamerOnLine/imagetool/stargazers"><img src="https://img.shields.io/github/stars/TamerOnLine/imagetool?style=for-the-badge" /></a>
-  <a href="https://github.com/TamerOnLine/imagetool/issues"><img src="https://img.shields.io/github/issues/TamerOnLine/imagetool?style=for-the-badge" /></a>
-  <a href="https://github.com/TamerOnLine/imagetool"><img src="https://img.shields.io/github/license/TamerOnLine/imagetool?style=for-the-badge" /></a>
+  <a href="https://github.com/TamerOnLine/imagectl/stargazers"><img src="https://img.shields.io/github/stars/TamerOnLine/imagectl?style=for-the-badge" /></a>
+  <a href="https://github.com/TamerOnLine/imagectl/issues"><img src="https://img.shields.io/github/issues/TamerOnLine/imagectl?style=for-the-badge" /></a>
+  <a href="https://github.com/TamerOnLine/imagectl/blob/main/LICENSE"><img src="https://img.shields.io/github/license/TamerOnLine/imagectl?style=for-the-badge" /></a>
   <img src="https://img.shields.io/badge/Web%20UI-Streamlit-orange?style=for-the-badge" />
 </p>
 
-<p align="center">
-  <a href="https://pypi.org/project/imagetool/"><img src="https://img.shields.io/pypi/v/imagetool?style=for-the-badge" /></a>
-  <a href="https://pypi.org/project/imagetool/"><img src="https://img.shields.io/pypi/pyversions/imagetool?style=for-the-badge" /></a>
-  <a href="https://pypi.org/project/imagetool/"><img src="https://img.shields.io/pypi/dm/imagetool?style=for-the-badge" /></a>
-</p>
+**imagectl** is a lightweight and fast batch image processing tool with a clean **Streamlit Web UI**.  
+Resize (px or cm with DPI), apply circle/ellipse masks, smart compression to target size, and range‑based selection by filename — then download all results as a single ZIP.
 
-**ImageTool** is a lightweight yet powerful tool for batch image processing.  
-Resize, apply circle/ellipse masks, compress, and filter images by filename ranges — all through an intuitive **Streamlit Web UI**.
-
-Ideal for creators, developers, photographers, e-commerce, thumbnails, social media, and bulk image optimization.
+> Perfect for creators, e‑commerce, thumbnails, social media, and bulk optimization.
 
 ---
 
 ## ✨ Features
-
-✅ Batch resize images to **px** or **cm @ DPI**  
-✅ Apply **circle** or **ellipse** cutout masks  
-✅ Target size compression (auto-adjusts JPEG quality)  
-✅ Works with JPG, PNG, WebP, BMP  
-✅ Smart filename range selection:
-```
-Examples: 1,3-5,7-, -4, 1,3,6-9,12-
-```
-✅ Optional auto-indexing for files without numbers  
-✅ Export all processed images as a single **ZIP**  
-✅ Clean and easy Web UI built with Streamlit  
+- Resize using **px** or **cm @ DPI**
+- **Mask:** Circular or elliptical cut‑out (with transparency)
+- **Compression:** Auto‑adjusts JPEG quality to reach max KB
+- Supported formats: **JPG / PNG / WebP / BMP**
+- Smart **range filter** based on numbers in filenames:
+  - Examples: `5`, `2-6`, `-4`, `7-`, `1,3,6-9,12-`
+- **Auto‑index** option for files without numbers (1..N)
+- Export all results as a single **ZIP**
 
 ---
 
-## 🎥 Demo GIF (Placeholder)
+## 🚀 Quick Start
 
-> _Insert a short 6–10 sec GIF here demonstrating:_  
-✔ Upload images → choose size & mask → download ZIP
+> Recommended: use **uv** for fast development, or pip normally.  
+> (PyPI install section will be added after publishing)
 
-**Suggested filename:** `demo.gif`  
-**Recommended size:** 900×500
-
+### Using uv (local dev)
+```bash
+git clone https://github.com/TamerOnLine/imagectl.git
+cd imagectl
+uv sync
+uv run imagectl --port 8600
 ```
-[ PLACEHOLDER FOR DEMO GIF ]
+
+### Using pip (local dev)
+```bash
+git clone https://github.com/TamerOnLine/imagectl.git
+cd imagectl
+pip install -e .
+imagectl --port 8600
 ```
+
+> Default port: 8501. Use `--port 8600` to change.
 
 ---
 
-## 🚀 Installation
+## 🧑‍💻 CLI / Commands
 
-### Using pip
+Two console scripts are provided:
 
+- **`imagectl`** → Launch Web UI (Streamlit)
+- **`imagectl-web`** → Same as above (explicit Web name)
+
+Examples:
 ```bash
-pip install imagetool
+imagectl
+imagectl --port 8600
+imagectl-web --port 9000
 ```
 
-### Using uv (recommended for speed)
-
-```bash
-uv pip install imagetool
+Then open:
 ```
-
----
-
-## 🧑‍💻 Usage
-
-### Launch the Web UI
-
-```bash
-imagetool-web
-```
-
-Default port: `8501`
-
-Run on another port:
-
-```bash
-imagetool-web --port 8600
-```
-
-Then open in your browser:
-
-```
+http://localhost:8501
+# or
 http://localhost:8600
 ```
 
 ---
 
-## 🖥️ Screenshots (Placeholders)
+## 📥 Usage (inside UI)
+1) Upload one or multiple images (JPG/PNG/WebP/BMP)  
+2) Choose size: px or cm + DPI  
+3) Optional: Circle or Ellipse mask  
+4) Set **Max size (KB)** for smart compression  
+5) Optional: enter a **Range** to filter which images to process  
+   - `5`, `2-6`, `-4`, `7-`, `1,3,6-9,12-`  
+6) Click **Process ✨** and download the ZIP
 
-> Add 2–3 images that show the UI
+If filenames lack numbers, enable **Auto‑index** to number them by upload order.
 
-| Upload & Preview | Settings Panel | Download Result |
-|------------------|----------------|-----------------|
+---
+
+## 🖼️ Screenshots / Demo (Placeholders)
+
+| Upload & Preview | Settings | Download ZIP |
+|---|---|---|
 | *(screenshot 1)* | *(screenshot 2)* | *(screenshot 3)* |
 
----
-
-## 📦 Project Structure
-
-```
-imagetool/
-├── src/imagetool/
-│   ├── app.py        # Main Streamlit application
-│   ├── web.py        # Launcher for the Web UI
-│   ├── runner.py     # Dev entrypoint
-│   ├── ranges.py     # Range parsing utility
-│   └── __init__.py   # Package metadata
-├── tools/            # Dev tools (publish, changelog, etc.)
-├── pyproject.toml    # Project configuration
-└── README.md
-```
-
----
-
-## 🧠 How Range Selection Works
-
-You can filter images based on numeric values in filenames:
-
-| Expression | Meaning |
-|------------|----------|
-| `5`        | only #5 |
-| `2-6`      | 2 to 6 |
-| `-4`       | 1 to 4 |
-| `7-`       | 7 to end |
-| `1,3,6-9,12-` | combine multiple rules |
-
-If a filename has no number, you can auto-index based on upload order.
+Add a short GIF (6–10s) showing: upload → adjust → download.  
+Suggested size: 900×500  
+Filename: `demo.gif`
 
 ---
 
 ## 🗺️ Roadmap
-
-| Status | Feature |
-|--------|----------|
-| ✅ | Initial release with batch processing |
-| 🔜 | Add CLI batch processing (without UI) |
-| 🔜 | Add image watermark removal |
-| 🔜 | Add filters (sharpness, contrast, background removal) |
-| 🧪 | API mode for developers to integrate in Python apps |
-
-Want to request a feature? → Open an Issue
+- [x] Initial release: resize/mask/compress + ranges
+- [ ] CLI batch processing (no UI)
+- [ ] Improved PNG & WebP compression
+- [ ] Basic filters (sharpness / contrast / bg remove)
+- [ ] API mode for integration
 
 ---
 
 ## 🤝 Contributing
+Contributions are welcome!
 
-Contributions are welcome!  
-Please:
-
-1. Open an issue to discuss changes
+1. Open an issue
 2. Fork the repo
 3. Create a feature branch
-4. Submit a pull request
+4. Submit a PR
 
 ---
 
 ## 🪪 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## ⭐ Support
-
-If you found this useful, consider:
-
-✅ ⭐ Starring the repo  
-🐞 Creating issues for bugs or suggestions  
-📣 Sharing it with others
+MIT — see [LICENSE](./LICENSE)
 
 ---
 
-## 📍 Links
+## 🔗 Links
+- Repo: https://github.com/TamerOnLine/imagectl
+- Issues: https://github.com/TamerOnLine/imagectl/issues
 
-- PyPI: https://pypi.org/project/imagetool/
-- GitHub: https://github.com/TamerOnLine/imagetool
-
+<!-- PyPI badges to add after publishing:
+<a href="https://pypi.org/project/imagectl/"><img src="https://img.shields.io/pypi/v/imagectl?style=for-the-badge" /></a>
+<a href="https://pypi.org/project/imagectl/"><img src="https://img.shields.io/pypi/pyversions/imagectl?style=for-the-badge" /></a>
+<a href="https://pypi.org/project/imagectl/"><img src="https://img.shields.io/pypi/dm/imagectl?style=for-the-badge" /></a>
+-->
